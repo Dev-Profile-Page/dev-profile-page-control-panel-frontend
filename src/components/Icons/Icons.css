@@ -1,0 +1,15 @@
+.stroke-color {
+    stroke: #353535;
+}
+
+.stroke-color:hover {
+    stroke: white;
+}
+
+.fill-color {
+    fill: #353535;
+}
+
+.fill-color:hover {
+    fill: white;
+}
