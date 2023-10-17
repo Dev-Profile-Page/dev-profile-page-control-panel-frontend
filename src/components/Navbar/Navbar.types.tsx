@@ -6,6 +6,7 @@ export type Menu = {
     icon: React.ComponentType<IconProps>,
     path?: string,
     action?: Function,
+    component?: React.ReactNode,
 };
 
 export type NavbarProps = {
