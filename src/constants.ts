@@ -10,20 +10,20 @@ export const menus: Menu[] = [
     {
       name: 'Dashboard',
       icon: DashboardIcon,
-      path: '/dashboard',
-      component: <Dashboard />,
+      path: 'dashboard',
+      component: Dashboard,
     },
     {
       name: 'Social Accounts',
       icon: SocialAccountsIcon,
-      path: '/social-accounts',
-      component: <SocialAccounts />,
+      path: 'social-accounts',
+      component: SocialAccounts,
     },
     {
       name: 'Page contents',
       icon: PageContentsIcon,
-      path: '/page-contents',
-      component: <PageContents />
+      path: 'page-contents',
+      component: PageContents
     },
     {
       name: 'Logout',
