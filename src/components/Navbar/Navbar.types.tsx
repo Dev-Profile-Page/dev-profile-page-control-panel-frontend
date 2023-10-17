@@ -5,7 +5,7 @@ export type Menu = {
     name: string,
     icon: React.ComponentType<IconProps>,
     path?: string,
-    action?: Function,
+    action?: React.EventHandler<any>,
     component?: React.ComponentType<any>,
 };
 
@@ -15,6 +15,5 @@ export type NavbarProps = {
 
 export type NavItemProps = {
     isActive: boolean,
-    icon: React.ComponentType<IconProps>,
     title?: string,
-};
+} & Pick<Menu, 'icon' | 'path' | 'action'>;

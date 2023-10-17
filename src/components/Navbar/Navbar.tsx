@@ -3,8 +3,8 @@ import * as React from "react";
 import styles from './Navbar.module.css';
 import { NavItemProps, NavbarProps } from "./Navbar.types";
 import { Popover } from "react-tiny-popover";
+import { NavLink } from "react-router-dom";
 
-// TODO: Handle routes from 'path' prop and handle actions defined in 'action' prop of Menu object
 export function Navbar({
     menus = [],
 }: NavbarProps) {
@@ -12,14 +12,15 @@ export function Navbar({
         <div className={styles.navbar}>
             {
                 menus.map((menu) => (
-                    <NavItem isActive={false} icon={menu.icon} title={menu.name} />
+                    <NavItem isActive={false} icon={menu.icon} title={menu.name} path={menu.path} action={menu.action} />
                 ))
             }
         </div>
     );
 }
 
-export function NavItem({ isActive, icon: Icon, title }: NavItemProps) {
+// TODO: We can replace isActive prop with react-router's Active Links
+export function NavItem({ isActive, icon: Icon, title, action, path }: NavItemProps) {
     const [ isPopoverOpen, setIsPopoverOpen ] = React.useState(false);
 
     let className = styles.navitem;
@@ -28,16 +29,22 @@ export function NavItem({ isActive, icon: Icon, title }: NavItemProps) {
         className += ` ${styles['navitem-active']}`;
     }
 
+
     return (
-        <Popover isOpen={isPopoverOpen} content={<NavItemPopoverContent title={title || ''} />}>
-            <div
-                className={className}
-                onMouseEnter={() => setIsPopoverOpen(true)}
-                onMouseLeave={() => setIsPopoverOpen(false)}
+        <NavItemWrapper
+                path={path}
+                action={action}
             >
-                <Icon isActive={isActive} />
-            </div>
-        </Popover>
+                <Popover isOpen={isPopoverOpen} content={<NavItemPopoverContent title={title || ''} />}>
+                    <div
+                        className={className}
+                        onMouseEnter={() => setIsPopoverOpen(true)}
+                        onMouseLeave={() => setIsPopoverOpen(false)}
+                    >
+                        <Icon isActive={isActive} />
+                    </div>
+                </Popover>
+            </NavItemWrapper>
     );
 }
 
@@ -49,4 +56,28 @@ function NavItemPopoverContent({ title }: NavItemPopoverContentProps) {
     return (
         <div className={styles.navItemPopoverContent}>{ title }</div>
     );
+}
+
+export type NavItemWrapperProps = {
+    
+} & Pick<NavItemProps, 'path' | 'action'> & React.PropsWithChildren;
+
+function NavItemWrapper({ path, action, children }: NavItemWrapperProps) {
+    if(path) {
+        return (
+            <NavLink to={path}>
+                {children}
+            </NavLink>
+        );
+    }
+
+    if(action) {
+        return (
+            <div onClick={action}>
+                {children}
+            </div>
+        );
+    }
+
+    return children;
 }
