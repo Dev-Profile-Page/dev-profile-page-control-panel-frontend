@@ -3,7 +3,7 @@ import * as React from "react";
 import styles from './Navbar.module.css';
 import { NavItemProps, NavbarProps } from "./Navbar.types";
 import { Popover } from "react-tiny-popover";
-import { NavLink } from "react-router-dom";
+import { NavLink, useMatch } from "react-router-dom";
 
 export function Navbar({
     menus = [],
@@ -12,23 +12,24 @@ export function Navbar({
         <div className={styles.navbar}>
             {
                 menus.map((menu) => (
-                    <NavItem isActive={false} icon={menu.icon} title={menu.name} path={menu.path} action={menu.action} />
+                    <NavItem icon={menu.icon} title={menu.name} path={menu.path} action={menu.action} />
                 ))
             }
         </div>
     );
 }
 
-// TODO: We can replace isActive prop with react-router's Active Links
-export function NavItem({ isActive, icon: Icon, title, action, path }: NavItemProps) {
+export function NavItem({icon: Icon, title, action, path }: NavItemProps) {
     const [ isPopoverOpen, setIsPopoverOpen ] = React.useState(false);
+
+    const match = useMatch(path || '');
+    let isActive = Boolean(match);
 
     let className = styles.navitem;
 
     if(isActive) {
         className += ` ${styles['navitem-active']}`;
     }
-
 
     return (
         <NavItemWrapper

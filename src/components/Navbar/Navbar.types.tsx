@@ -14,6 +14,5 @@ export type NavbarProps = {
 };
 
 export type NavItemProps = {
-    isActive: boolean,
     title?: string,
 } & Pick<Menu, 'icon' | 'path' | 'action'>;
