@@ -1,0 +1,22 @@
+.dashboard-stats {
+  display: grid;
+  gap: 20px;
+  justify-items: center;
+  padding: 20px 0;
+}
+
+@media only screen and (min-width: 600px) {
+  .dashboard-stats {
+    padding-top: 50px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 50px;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  .dashboard-stats {
+    padding-top: 100px;
+    gap: 100px;
+  }
+}
