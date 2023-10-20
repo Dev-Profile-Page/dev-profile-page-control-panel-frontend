@@ -6,7 +6,7 @@
     border-radius: 50px;
     background-color: #353535;
     box-shadow: 0 0 20px #00000033;
-    position: absolute;
+    position: fixed;
     bottom: 25px;
     left: 50%;
     transform: translateX(-50%);
