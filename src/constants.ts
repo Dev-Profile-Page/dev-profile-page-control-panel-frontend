@@ -1,6 +1,4 @@
-import * as React from 'react';
-
-import { Dashboard } from './pages/Dashboard';
+import { Dashboard } from './pages/Dashboard/Dashboard';
 import { SocialAccounts } from './pages/SocialAccounts';
 import { PageContents } from './pages/PageContents';
 import { Dashboard as DashboardIcon, Logout as LogoutIcon, PageContents as PageContentsIcon, SocialAccounts as SocialAccountsIcon } from './components/Icons/Icons';

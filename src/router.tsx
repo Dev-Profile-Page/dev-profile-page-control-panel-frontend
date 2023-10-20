@@ -3,7 +3,7 @@ import * as React from 'react';
 import { RouteObject, createBrowserRouter } from "react-router-dom";
 
 import { menus } from "./constants";
-import { Dashboard } from "./pages/Dashboard";
+import { Dashboard } from "./pages/Dashboard/Dashboard";
 import { ErrorPage } from "./pages/ErrorPage";
 import App from './App';
 
