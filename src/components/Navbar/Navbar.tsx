@@ -3,7 +3,7 @@ import * as React from "react";
 import styles from './Navbar.module.css';
 import { NavItemProps, NavbarProps } from "./Navbar.types";
 import { Popover } from "react-tiny-popover";
-import { NavLink, useMatch } from "react-router-dom";
+import { NavLink, useLocation, useMatch } from "react-router-dom";
 
 export function Navbar({
     menus = [],
@@ -22,8 +22,14 @@ export function Navbar({
 export function NavItem({icon: Icon, title, action, path }: NavItemProps) {
     const [ isPopoverOpen, setIsPopoverOpen ] = React.useState(false);
 
-    const match = useMatch(path || '');
+    const match = useMatch(path || '<noroute>');
+    const location = useLocation();
+
     let isActive = Boolean(match);
+
+    if(location.pathname === '/' && title === 'Dashboard') {
+        isActive = true;
+    }
 
     let className = styles.navitem;
 
