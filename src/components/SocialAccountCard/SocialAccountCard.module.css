@@ -1,0 +1,25 @@
+.social-account-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border: 1px solid #b0b0b04d;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #b0b0b04d;
+}
+
+.social-account-name-container {
+  flex: 1;
+  padding-left: 15px;
+  font-size: 16px;
+}
+
+@media only screen and (min-width: 600px) {
+  .social-account-card {
+    padding: 30px;
+  }
+
+  .social-account-name-container {
+    font-size: 20px;
+  }
+}
