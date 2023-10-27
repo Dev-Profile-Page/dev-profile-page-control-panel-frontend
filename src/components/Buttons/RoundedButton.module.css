@@ -1,0 +1,17 @@
+.rounded-button {
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.rounded-button-small {
+  padding: 8px 15px;
+  border-radius: 30px;
+  font-size: 12px;
+}
+
+.rounded-button-large {
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 18px;
+}
