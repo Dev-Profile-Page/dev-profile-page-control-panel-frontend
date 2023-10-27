@@ -5,6 +5,7 @@ import { RouterProvider } from 'react-router-dom'
 import { router } from './router.tsx'
 
 import './index.css'
+import './colors.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
