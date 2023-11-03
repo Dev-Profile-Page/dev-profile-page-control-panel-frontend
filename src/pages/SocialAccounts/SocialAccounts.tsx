@@ -8,6 +8,7 @@ export type SocialAccountsProps = {
 
 };
 
+// TODO: Move the common page styles and page title container to an HOC
 export function SocialAccounts({}: SocialAccountsProps) {
     return (
         <div className={styles.page}>
