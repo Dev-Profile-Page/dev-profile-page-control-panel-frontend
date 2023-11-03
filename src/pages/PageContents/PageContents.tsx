@@ -1,11 +1,17 @@
 import * as React from 'react';
 
-import './PageContent.module.css';
+import styles from './PageContent.module.css';
 
 export type PageContentsProps = {  };
 
 export function PageContents({  }: PageContentsProps) {
   return (
-    <div>PageContents</div>
+    <div className={styles.page}>
+      <div className={styles['page-title-container']}>
+          <h1>Page Contents</h1>
+      </div>
+
+      
+    </div>
   );
 }

@@ -1,0 +1,13 @@
+.page {
+  padding-bottom: 100px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.page-title-container {
+  text-align: center;
+}
+
+.page-title-container h1 {
+  font-weight: normal;
+}
