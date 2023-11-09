@@ -16,6 +16,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
+* {
+  font-family: 'Source Code Pro', monospace;
+}
+
 body {
   margin: 0;
   min-width: 320px;
