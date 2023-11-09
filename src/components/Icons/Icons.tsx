@@ -116,3 +116,11 @@ export function Pencil() {
         </svg>
     );
 }
+
+export function ReactIcon() {
+    return <img src='src/assets/images/tech-icons/react.png' />;
+}
+
+export function TypeScriptIcon() {
+    return <img src='src/assets/images/tech-icons/typescript.png' />;
+}
