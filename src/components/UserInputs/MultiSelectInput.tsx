@@ -1,10 +1,10 @@
 import * as React from 'react';
 
+import { MultiValue } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 
 import commonStyles from './CommonInput.module.css';
 import styles from './MultiSelectInput.module.css';
-import { MultiValue } from 'react-select';
 
 export type MultiSelectOption = {
   readonly id: any,
