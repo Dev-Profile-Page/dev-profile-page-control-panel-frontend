@@ -4,7 +4,6 @@ import CreatableSelect from 'react-select/creatable';
 
 import commonStyles from './CommonInput.module.css';
 import styles from './MultiSelectInput.module.css';
-import classNames from 'classnames';
 import { MultiValue } from 'react-select';
 
 export type MultiSelectOption = {
