@@ -1,0 +1,19 @@
+.page-content-section {
+  margin: 50px 0;
+}
+
+.section-container {
+  display: flex;
+  justify-content: center;
+}
+
+.section-title {
+  padding: 5px 20px;
+  background-color: #C4C4C4;
+  color: #2C2C2C;
+  border-radius: 5px;
+}
+
+.children-container {
+  
+}
