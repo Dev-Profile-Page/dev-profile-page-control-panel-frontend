@@ -101,3 +101,18 @@ export function Github() {
         </svg>
     );
 }
+
+export function Pencil() {
+    return (
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1_413)">
+                <path d="M29.656 2.344C26.535 -0.780998 21.465 -0.780998 18.344 2.344L0.031 20.656L0 32H11.312L29.656 13.656C32.781 10.531 32.781 5.469 29.656 2.344ZM9.613 28H3.957V22.312C5.519 20.75 8.051 20.75 9.613 22.312C11.175 23.874 11.176 26.438 9.613 28ZM26.754 10.828L21.098 5.172C22.66 3.61 25.192 3.61 26.754 5.172C28.316 6.734 28.316 9.266 26.754 10.828Z" fill="#2C2C2C"/>
+            </g>
+            <defs>
+                <clipPath id="clip0_1_413">
+                    <rect width="32" height="32" fill="white"/>
+                </clipPath>
+            </defs>
+        </svg>
+    );
+}
