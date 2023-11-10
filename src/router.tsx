@@ -6,11 +6,12 @@ import { menus } from "./constants";
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 import { ErrorPage } from "./pages/ErrorPage";
 import App from './App';
+import { AuthPage } from './pages/Auth/Auth';
 
 const routes: RouteObject[] = [
     {
         index: true,
-        Component: Dashboard,
+        Component: AuthPage,
     },
 
     ...menus
