@@ -10,6 +10,7 @@ import { TextInput } from '../../components/UserInputs/TextInput';
 import { TextAreaInput } from '../../components/UserInputs/TextAreaInput';
 import { MultiSelectInput, MultiSelectOption } from '../../components/UserInputs/MultiSelectInput';
 import { ToggleInputCard } from '../../components/UserInputs/ToggleInputCard';
+import { FileInput } from '../../components/UserInputs/FileInput';
 
 export type PageContentsProps = {  };
 
@@ -30,8 +31,7 @@ export function PageContents({  }: PageContentsProps) {
           <TextInput label='Display Name' placeHolder='Type out or click autofill' />
           <Divider />
 
-          {/* TODO: Convert this into file picker */}
-          <TextInput label='Display picture' placeHolder='Click to select a picture or autofill' />
+          <FileInput label='Display picture' placeHolder='Click to select a picture or autofill' />
           <Divider />
 
           <TextAreaInput label='Bio' placeHolder='Type out or click autofill' />
