@@ -1,7 +1,8 @@
 import * as React from 'react';
 
 import commonStyles from './CommonInput.module.css';
-import { Pencil } from '../Icons/Icons';
+
+import { Autofill } from '../Autofill/Autofill';
 
 export type TextInputProps = {
   label: string,
@@ -17,18 +18,7 @@ export function TextInput({ label, placeHolder }: TextInputProps) {
       <div className={commonStyles['input-wrapper']}>
         <input id={id} type='text' placeholder={placeHolder} />
         <div className={commonStyles['input-suffix']}>
-          <div style={{
-            width: 35,
-            height: 35,
-            borderRadius: '50%',
-            backgroundColor: '#C4C4C4',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-          }}>
-            <Pencil />
-          </div>
+          <Autofill />
         </div>
       </div>
     </div>

@@ -1,9 +1,11 @@
 import * as React from 'react';
 
+import classNames from 'classnames';
+
 import commonStyles from './CommonInput.module.css';
 import styles from './FileInput.module.css';
-import { Pencil } from '../Icons/Icons';
-import classNames from 'classnames';
+
+import { Autofill } from '../Autofill/Autofill';
 
 export type TextInputProps = {
   label: string,
@@ -22,18 +24,7 @@ export function FileInput({ label, placeHolder }: TextInputProps) {
         <label htmlFor={id} className={styles['file-input-proxy']}>Pick a new file or autofil</label>
         <input id={id} type='file' className={styles['file-input']} placeholder={placeHolder} />
         <div className={commonStyles['input-suffix']}>
-          <div style={{
-            width: 35,
-            height: 35,
-            borderRadius: '50%',
-            backgroundColor: '#C4C4C4',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-          }}>
-            <Pencil />
-          </div>
+          <Autofill />
         </div>
       </div>
     </div>
