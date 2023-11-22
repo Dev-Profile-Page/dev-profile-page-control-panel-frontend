@@ -9,9 +9,9 @@ export type AuthButtonProps = {
   onClick: (id: any) => void,
 };
 
-export function AuthButton({ icon: Icon, id, name }: AuthButtonProps) {
+export function AuthButton({ icon: Icon, id, name, onClick }: AuthButtonProps) {
   return (
-    <div className={styles['auth-button-card-container']}>
+    <div className={styles['auth-button-card-container']} onClick={() => onClick(id)}>
       <div>
         <Icon />
         <span>
