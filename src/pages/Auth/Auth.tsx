@@ -4,6 +4,9 @@ import styles from './Auth.module.css';
 
 import { AuthButton } from '../../components/AuthButton/AuthButton';
 import { Github, Stackoverflow, Twitter } from '../../components/Icons/Icons';
+import Auth from '../../services/auth.service';
+
+// TODO: create error pages - not found, not authorized
 
 export function AuthPage() {
   return (
@@ -15,9 +18,9 @@ export function AuthPage() {
         </div>
 
         <div className={styles['auth-buttons']}>
-          <AuthButton icon={Github} name='Github' id='GITHUB' onClick={(id: any) => console.log(id)} />
-          <AuthButton icon={Stackoverflow} name='Stackoverflow' id='STACKOVERFLOW' onClick={(id: any) => console.log(id)} />
-          <AuthButton icon={Twitter} name='Twitter' id='TWITTER' onClick={(id: any) => console.log(id)} />
+          <AuthButton icon={Github} name='Github' id='GITHUB' onClick={() => console.log('Github')} />
+          <AuthButton icon={Stackoverflow} name='Stackoverflow' id='STACKOVERFLOW' onClick={Auth.initiateStackOverflowAuth} />
+          <AuthButton icon={Twitter} name='Twitter' id='TWITTER' onClick={() => console.log('Twitter')} />
         </div>
 
       </main>
