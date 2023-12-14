@@ -25,7 +25,7 @@ export function AuthPage() {
 
       </main>
       <footer>
-        <h5>Let's <span>git init start</span></h5>
+        <h5>Let's <span>git init you</span></h5>
         <p>By signing up you accept our Terms and Conditions</p>
       </footer>
     </div>
