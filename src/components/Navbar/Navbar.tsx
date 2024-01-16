@@ -14,7 +14,7 @@ export function Navbar({
         <div className={styles.navbar}>
             {
                 menus.map((menu) => (
-                    <NavItem icon={menu.icon} title={menu.name} path={menu.path} action={menu.action} />
+                    <NavItem key={menu.name} icon={menu.icon} title={menu.name} path={menu.path} action={menu.action} />
                 ))
             }
         </div>
