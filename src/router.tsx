@@ -3,15 +3,21 @@ import * as React from 'react';
 import { RouteObject, createBrowserRouter } from "react-router-dom";
 
 import { menus } from "./constants";
-import { Dashboard } from "./pages/Dashboard/Dashboard";
 import { ErrorPage } from "./pages/ErrorPage";
-import App from './App';
 import { AuthPage } from './pages/Auth/Auth';
+import { AuthCallbackPage } from './pages/AuthCallback';
 
 const routes: RouteObject[] = [
     {
         index: true,
         Component: AuthPage,
+        errorElement: <ErrorPage />,
+    },
+
+    {
+        path: '/auth-callback',
+        Component: AuthCallbackPage,
+        errorElement: <ErrorPage />,
     },
 
     ...menus
@@ -19,14 +25,10 @@ const routes: RouteObject[] = [
         .map(menu => ({
             path: menu.path,
             Component: menu.component,
+            errorElement: <ErrorPage />,
         })),
 ];
 
 export const router = createBrowserRouter([
-    {
-        errorElement: <ErrorPage />,
-        path: '/',
-        Component: App,
-        children: routes
-    }
+    ...routes,
 ]);

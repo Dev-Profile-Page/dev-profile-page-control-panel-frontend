@@ -1,9 +1,11 @@
 import * as React from "react";
 
+import { NavLink, useLocation, useMatch, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import styles from './Navbar.module.css';
 import { NavItemProps, NavbarProps } from "./Navbar.types";
 import { Popover } from "react-tiny-popover";
-import { NavLink, useLocation, useMatch } from "react-router-dom";
 
 export function Navbar({
     menus = [],
@@ -41,6 +43,7 @@ export function NavItem({icon: Icon, title, action, path }: NavItemProps) {
         <NavItemWrapper
                 path={path}
                 action={action}
+                title={title}
             >
                 <Popover isOpen={isPopoverOpen} content={<NavItemPopoverContent title={title || ''} />}>
                     <div
@@ -67,9 +70,12 @@ function NavItemPopoverContent({ title }: NavItemPopoverContentProps) {
 
 export type NavItemWrapperProps = {
     
-} & Pick<NavItemProps, 'path' | 'action'> & React.PropsWithChildren;
+} & Pick<NavItemProps, 'path' | 'action' | 'title'> & React.PropsWithChildren;
 
-function NavItemWrapper({ path, action, children }: NavItemWrapperProps) {
+function NavItemWrapper({ title, path, action, children }: NavItemWrapperProps) {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     if(path) {
         return (
             <NavLink to={path}>
@@ -78,9 +84,17 @@ function NavItemWrapper({ path, action, children }: NavItemWrapperProps) {
         );
     }
 
+    function onClickHandler(name: string) {
+        if(action) {
+            if(name === 'Logout') {
+                action(dispatch, navigate);
+            }
+        }
+    }
+
     if(action) {
         return (
-            <div onClick={action}>
+            <div onClick={() => onClickHandler(title)}>
                 {children}
             </div>
         );
