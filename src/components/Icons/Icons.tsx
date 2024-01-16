@@ -14,18 +14,18 @@ export function Dashboard({ isActive }: IconProps) {
 
     return (
         <svg width="90%" height="90%" viewBox="0 0 75 75" stroke={color} fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18.75 38.0859H18.1641" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M58.0078 38.0859H57.4219" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M21.3405 28.418L20.8331 28.125" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M28.418 21.3406L28.125 20.8331" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M54.8314 28.418L55.3388 28.125" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M47.7539 21.3406L48.0469 20.8331" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M38.0859 18.75V18.1641" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M42.7734 26.3994L39.014 40.4296" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M38.0859 63.8672C52.3245 63.8672 63.8672 52.3245 63.8672 38.0859C63.8672 23.8473 52.3245 12.3047 38.0859 12.3047C23.8473 12.3047 12.3047 23.8473 12.3047 38.0859C12.3047 52.3245 23.8473 63.8672 38.0859 63.8672Z" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M48.6328 45.1172H62.1094" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M13.4766 45.1172H27.5391" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M38.0859 49.8047C40.6748 49.8047 42.7734 47.706 42.7734 45.1172C42.7734 42.5284 40.6748 40.4297 38.0859 40.4297C35.4971 40.4297 33.3984 42.5284 33.3984 45.1172C33.3984 47.706 35.4971 49.8047 38.0859 49.8047Z" stroke-width="4" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18.75 38.0859H18.1641" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M58.0078 38.0859H57.4219" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M21.3405 28.418L20.8331 28.125" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M28.418 21.3406L28.125 20.8331" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M54.8314 28.418L55.3388 28.125" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M47.7539 21.3406L48.0469 20.8331" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M38.0859 18.75V18.1641" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M42.7734 26.3994L39.014 40.4296" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M38.0859 63.8672C52.3245 63.8672 63.8672 52.3245 63.8672 38.0859C63.8672 23.8473 52.3245 12.3047 38.0859 12.3047C23.8473 12.3047 12.3047 23.8473 12.3047 38.0859C12.3047 52.3245 23.8473 63.8672 38.0859 63.8672Z" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M48.6328 45.1172H62.1094" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M13.4766 45.1172H27.5391" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M38.0859 49.8047C40.6748 49.8047 42.7734 47.706 42.7734 45.1172C42.7734 42.5284 40.6748 40.4297 38.0859 40.4297C35.4971 40.4297 33.3984 42.5284 33.3984 45.1172C33.3984 47.706 35.4971 49.8047 38.0859 49.8047Z" strokeWidth="4" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
     );
 }
@@ -35,7 +35,7 @@ export function SocialAccounts({ isActive }: IconProps) {
 
     return (
         <svg width="75%" height="75%" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_1_246)">
+            <g clipPath="url(#clip0_1_246)">
                 <path fill={color} d="M27.0833 42.2917V29.1667H22.9167V42.2917C21.6667 42.9167 20.8333 44.375 20.8333 45.8333C20.8333 48.125 22.7083 50 25 50C27.2917 50 29.1667 48.125 29.1667 45.8333C29.1667 44.375 28.3333 42.9167 27.0833 42.2917ZM45.8333 35.4167C44.375 35.4167 42.9167 36.25 42.2917 37.5H35.4167V33.3333H37.0833C42.7083 33.3333 47.7083 29.1667 47.9167 23.5417C48.125 18.125 44.375 13.75 39.375 12.7083C38.5417 5.625 32.5 0 25 0C24.5833 0 24.1667 0 23.75 0C16.25 0.625 10.4167 7.5 10.4167 15.2083C10.4167 15.8333 9.79167 16.6667 8.95833 16.875C4.79167 17.5 1.66667 21.4583 2.08333 25.8333C2.5 30.2083 6.45833 33.3333 10.8333 33.3333H14.5833V37.5H7.70833C7.08333 36.25 5.625 35.4167 4.16667 35.4167C1.875 35.4167 0 37.2917 0 39.5833C0 41.875 1.875 43.75 4.16667 43.75C5.625 43.75 7.08333 42.9167 7.70833 41.6667H18.75V29.1667H10.8333C8.54167 29.1667 6.45833 27.5 6.25 25.4167C6.04167 23.3333 7.5 21.25 9.79167 20.8333C12.5 20.4167 14.5833 17.9167 14.5833 15.2083C14.5833 9.58333 18.75 4.79167 24.1667 4.375C24.375 4.375 24.7917 4.375 25 4.375C30.2083 4.375 34.5833 8.33333 35.4167 13.5417L35.8333 16.4583L38.75 17.0833C41.875 17.7083 43.9583 20.4167 43.75 23.5417C43.5417 26.875 40.625 29.375 37.0833 29.375H31.25V41.875H42.2917C42.9167 43.125 44.375 43.9583 45.8333 43.9583C48.125 43.9583 50 42.0833 50 39.7917C50 37.2917 48.125 35.4167 45.8333 35.4167Z"/>
             </g>
             <defs>
@@ -88,7 +88,7 @@ export function Twitter() {
 export function Stackoverflow() {
     return (
         <svg width="30" height="30" viewBox="0 0 105 124" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M88 79.8081H99V123.808H0V79.8081H11V112.808H88V79.8081Z" fill="#BBBBBB"/>
+            <path fillRule="evenodd" clipRule="evenodd" d="M88 79.8081H99V123.808H0V79.8081H11V112.808H88V79.8081Z" fill="#BBBBBB"/>
             <path d="M22.9879 76.538L77.0129 87.893L79.2839 77.093L25.2589 65.733L22.9879 76.538ZM30.1369 50.669L80.1829 73.977L84.8449 63.968L34.7979 40.66L30.1369 50.669ZM43.9849 26.116L86.4129 61.447L93.4789 52.962L51.0509 17.632L43.9849 26.116ZM71.3719 0L62.5119 6.59L95.4599 50.89L104.32 44.301L71.3719 0ZM22 101.808H77V90.808H22V101.808Z" fill="#F58025"/>
         </svg>
     );
@@ -105,7 +105,7 @@ export function Github() {
 export function Pencil() {
     return (
         <svg width="20" height="20" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_1_413)">
+            <g clipPath="url(#clip0_1_413)">
                 <path d="M29.656 2.344C26.535 -0.780998 21.465 -0.780998 18.344 2.344L0.031 20.656L0 32H11.312L29.656 13.656C32.781 10.531 32.781 5.469 29.656 2.344ZM9.613 28H3.957V22.312C5.519 20.75 8.051 20.75 9.613 22.312C11.175 23.874 11.176 26.438 9.613 28ZM26.754 10.828L21.098 5.172C22.66 3.61 25.192 3.61 26.754 5.172C28.316 6.734 28.316 9.266 26.754 10.828Z" fill="#2C2C2C"/>
             </g>
             <defs>
