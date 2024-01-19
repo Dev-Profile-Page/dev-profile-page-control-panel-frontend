@@ -112,7 +112,12 @@ export function PageContents({  }: PageContentsProps) {
               />
               <Divider />
 
-              <TextAreaInput control={control} name='bio' label='Bio' placeHolder='Type out or click autofill' />
+              <TextAreaInput
+                control={control}
+                name='bio'
+                label='Bio'
+                placeHolder='Type out or click autofill'
+              />
               <Divider />
 
               <TextInput
