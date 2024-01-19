@@ -12,7 +12,7 @@ import { MultiSelectInput, MultiSelectOption } from '../../components/UserInputs
 import { ToggleInputCard } from '../../components/UserInputs/ToggleInputCard';
 import { FileInput } from '../../components/UserInputs/FileInput';
 import { Layout } from '../../layouts/Layout';
-import { useForm } from 'react-hook-form';
+import { FormState, UseFormRegister, UseFormSetValue, UseFormTrigger, useForm } from 'react-hook-form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -35,7 +35,7 @@ export const TECHNOLOGIES: MultiSelectOption[] = [
 
 const schema = z.object({
   displayName: z.string().min(1, 'Display name is required'),
-  // displayPicture: z.string().min(1, 'Display picture is required'),
+  displayPicture: z.string().min(1, 'Display picture is required'),
   bio: z.string().min(1, 'Bio is required'),
   city: z.string().min(1, 'City is required'),
   website: z.string().min(1, 'Website is required').url('Should be a valid URL'),
@@ -44,21 +44,44 @@ const schema = z.object({
 
 export type PageContentsFormValues = z.infer<typeof schema>;
 
+export type PageContentFormContextType = {
+  register: UseFormRegister<PageContentsFormValues>,
+  setValue: UseFormSetValue<PageContentsFormValues>,
+  formState: FormState<PageContentsFormValues>,
+  trigger: UseFormTrigger<PageContentsFormValues>,
+};
+export const PageContentsFormContext = React.createContext<PageContentFormContextType>({} as any);
+
 export function PageContents({  }: PageContentsProps) {
-  const { handleSubmit, control, formState } = useForm<PageContentsFormValues>({
+  const { handleSubmit, control, register, setValue, formState, trigger, getValues } = useForm<PageContentsFormValues>({
     defaultValues: {
       displayName: '',
-      // displayPicture: '',
+      displayPicture: '',
       bio: '',
       city: '',
       website: '',
     },
     resolver: zodResolver(schema),
   });
+  const fileInputRef = React.createRef<HTMLInputElement>();
 
   const onSubmit = (data: PageContentsFormValues) => {
     console.log(data);
+    console.log(typeof data.displayPicture)
   };
+
+  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const currentValues = getValues();
+
+    // ? NOTE: For some reason file input is not scrolled into view automatically if invalid
+    if(!(currentValues.displayPicture)) {
+      window.scrollTo({top: fileInputRef.current?.clientTop, behavior: 'smooth'})
+    }
+
+    const submitCaller = handleSubmit(onSubmit);
+    submitCaller(e);
+  }
 
   return (
     <Layout isLogoCenter>
@@ -67,61 +90,70 @@ export function PageContents({  }: PageContentsProps) {
             <h1>Page Contents</h1>
         </div>
 
-        <form className={styles['form']} onSubmit={handleSubmit(onSubmit)}>
-          <PageContentSection title='General'>
-            <TextInput
-              label='Display Name'
-              placeHolder='Type out or click autofill'
-              control={control}
-              name='displayName'
-              rules={{required: true}}
-            />
+        <PageContentsFormContext.Provider value={{register, setValue, formState, trigger}}>
+          <form className={styles['form']} onSubmit={submitHandler}>
+            <PageContentSection title='General'>
+              <TextInput
+                label='Display Name'
+                placeHolder='Type out or click autofill'
+                control={control}
+                name='displayName'
+                rules={{required: true}}
+              />
+              <Divider />
+
+              <FileInput
+                ref={fileInputRef}
+                control={control}
+                name='displayPicture'
+                label='Display picture'
+                placeHolder='Click to select a picture or autofill'
+                rules={{required: {message: 'Required', value: true}}}
+              />
+              <Divider />
+
+              <TextAreaInput control={control} name='bio' label='Bio' placeHolder='Type out or click autofill' />
+              <Divider />
+
+              <TextInput
+                label='City'
+                placeHolder='Type out'
+                control={control}
+                name='city'
+              />
+              <Divider />
+
+              <TextInput
+                label='Website'
+                placeHolder='Type out'
+                control={control}
+                name='website'
+              />
+              <Divider />
+
+            </PageContentSection>
+
+            <PageContentSection title='Cards'>
+              <div className={styles['cards-container']}>
+                <ToggleInputCard id='TWITTER' icon={Twitter} name='Twitter' isSelected={true} onChange={console.log} />
+                <ToggleInputCard id='STACKOVERFLOW' icon={Stackoverflow} name='StackOverflow' isSelected={true} onChange={console.log} />
+                <ToggleInputCard id='GITHUB' icon={Github} name='Github' isSelected={true} onChange={console.log} />
+              </div>
+            </PageContentSection>
+
             <Divider />
 
-            <FileInput label='Display picture' placeHolder='Click to select a picture or autofill' />
+            <PageContentSection title='Technologies' subtitle='Select upto 5'>
+              <MultiSelectInput label='' placeHolder='Type to search' options={TECHNOLOGIES} />
+            </PageContentSection>
+
             <Divider />
 
-            <TextAreaInput control={control} name='bio' label='Bio' placeHolder='Type out or click autofill' />
-            <Divider />
-
-            <TextInput
-              label='City'
-              placeHolder='Type out'
-              control={control}
-              name='city'
-            />
-            <Divider />
-
-            <TextInput
-              label='Website'
-              placeHolder='Type out'
-              control={control}
-              name='website'
-            />
-            <Divider />
-
-          </PageContentSection>
-
-          <PageContentSection title='Cards'>
-            <div className={styles['cards-container']}>
-              <ToggleInputCard id='TWITTER' icon={Twitter} name='Twitter' isSelected={true} onChange={console.log} />
-              <ToggleInputCard id='STACKOVERFLOW' icon={Stackoverflow} name='StackOverflow' isSelected={true} onChange={console.log} />
-              <ToggleInputCard id='GITHUB' icon={Github} name='Github' isSelected={true} onChange={console.log} />
+            <div className={styles['save-button-container']}>
+              <RoundedButton backgroundColor={RoundedButtonColor.GREEN} size={RoundedButtonSize.MEDIUM}>Save</RoundedButton>
             </div>
-          </PageContentSection>
-
-          <Divider />
-
-          <PageContentSection title='Technologies' subtitle='Select upto 5'>
-            <MultiSelectInput label='' placeHolder='Type to search' options={TECHNOLOGIES} />
-          </PageContentSection>
-
-          <Divider />
-
-          <div className={styles['save-button-container']}>
-            <RoundedButton backgroundColor={RoundedButtonColor.GREEN} size={RoundedButtonSize.MEDIUM}>Save</RoundedButton>
-          </div>
-        </form>
+          </form>
+        </PageContentsFormContext.Provider>
         <SizedBox width='auto' height={50} />
       </div>
     </Layout>
