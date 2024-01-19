@@ -43,7 +43,7 @@ export function Autofill({ }: AutofillProps) {
               width: 35,
               height: 35,
               borderRadius: '50%',
-              backgroundColor: '#C4C4C4',
+              backgroundColor: 'var(--white)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',

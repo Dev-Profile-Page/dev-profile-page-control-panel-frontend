@@ -10,7 +10,7 @@ export function Divider({
   return (
     <div style={{
       height: 1,
-      backgroundColor: '#C4C4C4',
+      backgroundColor: 'var(--white)',
       width,
       margin: '35px auto'
     }}></div>

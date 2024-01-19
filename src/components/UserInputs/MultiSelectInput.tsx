@@ -57,7 +57,7 @@ export function MultiSelectInput({ label, placeHolder, options }: MultiSelectInp
             control: (baseStyles, { isDisabled }) => ({
               ...baseStyles,
               backgroundColor: isDisabled ? '#313131' : '#242424',
-              borderColor: '#C4C4C4',
+              borderColor: 'var(--white)',
               borderWidth: 1,
               borderRadius: 10,
               height: '100%',

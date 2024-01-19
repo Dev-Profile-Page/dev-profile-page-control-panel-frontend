@@ -3,6 +3,8 @@
 :root {
   --green: #0DC885;
   --grey: #424242;
+  --danger: #ff0037;
+  --white: #C4C4C4;
 }
 
 .green-bg {
@@ -11,4 +13,12 @@
 
 .grey-bg {
   background-color: var(--grey);
+}
+
+.danger-bg {
+  background-color: var(--danger);
+}
+
+.danger-text {
+  color: var(--danger);
 }

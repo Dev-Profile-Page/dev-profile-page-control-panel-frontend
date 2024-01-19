@@ -27,7 +27,7 @@
 }
 
 .selection-option-clear {
-  background-color: #C4C4C4;
+  background-color: var(--white);
   color: #040404;
   width: 18px;
   height: 18px;
