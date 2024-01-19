@@ -12,6 +12,10 @@ import { MultiSelectInput, MultiSelectOption } from '../../components/UserInputs
 import { ToggleInputCard } from '../../components/UserInputs/ToggleInputCard';
 import { FileInput } from '../../components/UserInputs/FileInput';
 import { Layout } from '../../layouts/Layout';
+import { useForm } from 'react-hook-form';
+
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
 
 export type PageContentsProps = {  };
 
@@ -20,7 +24,42 @@ export const TECHNOLOGIES: MultiSelectOption[] = [
   { value: 'typescript', label: 'TypeScript', id: 2, icon: TypeScriptIcon },
 ];
 
+// export type PageContentsFormValues = {
+//   displayName: string,
+//   displayPicture: string,
+//   bio: string,
+//   city: string,
+//   website: string,
+//   // TODO: Add Cards and Technologies
+// };
+
+const schema = z.object({
+  displayName: z.string().min(1, 'Display name is required'),
+  // displayPicture: z.string().min(1, 'Display picture is required'),
+  // bio: z.string().min(1, 'Bio is required'),
+  city: z.string().min(1, 'City is required'),
+  website: z.string().min(1, 'Website is required').url('Should be a valid URL'),
+  // TODO: Add Cards and Technologies
+});
+
+export type PageContentsFormValues = z.infer<typeof schema>;
+
 export function PageContents({  }: PageContentsProps) {
+  const { handleSubmit, control, formState } = useForm<PageContentsFormValues>({
+    defaultValues: {
+      displayName: '',
+      // displayPicture: '',
+      // bio: '',
+      city: '',
+      website: '',
+    },
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = (data: PageContentsFormValues) => {
+    console.log(data);
+  };
+
   return (
     <Layout isLogoCenter>
       <div className={styles.page}>
@@ -28,9 +67,15 @@ export function PageContents({  }: PageContentsProps) {
             <h1>Page Contents</h1>
         </div>
 
-        <form className={styles['form']}>
+        <form className={styles['form']} onSubmit={handleSubmit(onSubmit)}>
           <PageContentSection title='General'>
-            <TextInput label='Display Name' placeHolder='Type out or click autofill' />
+            <TextInput
+              label='Display Name'
+              placeHolder='Type out or click autofill'
+              control={control}
+              name='displayName'
+              rules={{required: true}}
+            />
             <Divider />
 
             <FileInput label='Display picture' placeHolder='Click to select a picture or autofill' />
@@ -39,10 +84,20 @@ export function PageContents({  }: PageContentsProps) {
             <TextAreaInput label='Bio' placeHolder='Type out or click autofill' />
             <Divider />
 
-            <TextInput label='City' placeHolder='Type out' />
+            <TextInput
+              label='City'
+              placeHolder='Type out'
+              control={control}
+              name='city'
+            />
             <Divider />
 
-            <TextInput label='Website' placeHolder='Type out' />
+            <TextInput
+              label='Website'
+              placeHolder='Type out'
+              control={control}
+              name='website'
+            />
             <Divider />
 
           </PageContentSection>
