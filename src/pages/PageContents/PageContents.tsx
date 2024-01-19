@@ -36,7 +36,7 @@ export const TECHNOLOGIES: MultiSelectOption[] = [
 const schema = z.object({
   displayName: z.string().min(1, 'Display name is required'),
   // displayPicture: z.string().min(1, 'Display picture is required'),
-  // bio: z.string().min(1, 'Bio is required'),
+  bio: z.string().min(1, 'Bio is required'),
   city: z.string().min(1, 'City is required'),
   website: z.string().min(1, 'Website is required').url('Should be a valid URL'),
   // TODO: Add Cards and Technologies
@@ -49,7 +49,7 @@ export function PageContents({  }: PageContentsProps) {
     defaultValues: {
       displayName: '',
       // displayPicture: '',
-      // bio: '',
+      bio: '',
       city: '',
       website: '',
     },
@@ -81,7 +81,7 @@ export function PageContents({  }: PageContentsProps) {
             <FileInput label='Display picture' placeHolder='Click to select a picture or autofill' />
             <Divider />
 
-            <TextAreaInput label='Bio' placeHolder='Type out or click autofill' />
+            <TextAreaInput control={control} name='bio' label='Bio' placeHolder='Type out or click autofill' />
             <Divider />
 
             <TextInput
