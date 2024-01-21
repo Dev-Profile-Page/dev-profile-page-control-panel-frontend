@@ -39,7 +39,8 @@ const schema = z.object({
   bio: z.string().min(1, 'Bio is required'),
   city: z.string().min(1, 'City is required'),
   website: z.string().min(1, 'Website is required').url('Should be a valid URL'),
-  // TODO: Add Cards and Technologies
+  technologies: z.array(z.custom<MultiSelectOption>()).min(1, 'Technologies is required').max(5, 'Select upto 5 technologies maximum'),
+  // TODO: Add Cards
 });
 
 export type PageContentsFormValues = z.infer<typeof schema>;
@@ -60,6 +61,7 @@ export function PageContents({  }: PageContentsProps) {
       bio: '',
       city: '',
       website: '',
+      technologies: [],
     },
     resolver: zodResolver(schema),
   });
@@ -149,7 +151,7 @@ export function PageContents({  }: PageContentsProps) {
             <Divider />
 
             <PageContentSection title='Technologies' subtitle='Select upto 5'>
-              <MultiSelectInput label='' placeHolder='Type to search' options={TECHNOLOGIES} />
+              <MultiSelectInput control={control} name='technologies' label='' placeHolder='Type to search' options={TECHNOLOGIES} />
             </PageContentSection>
 
             <Divider />

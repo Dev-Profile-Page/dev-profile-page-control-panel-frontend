@@ -5,6 +5,8 @@ import CreatableSelect from 'react-select/creatable';
 
 import commonStyles from './CommonInput.module.css';
 import styles from './MultiSelectInput.module.css';
+import { UseControllerProps, useController } from 'react-hook-form';
+import { PageContentsFormValues } from '../../pages/PageContents/PageContents';
 
 export type MultiSelectOption = {
   readonly id: any,
@@ -17,25 +19,21 @@ export type MultiSelectInputProps = {
   label: string,
   placeHolder: string,
   options: MultiSelectOption[],
-};
+} & UseControllerProps<PageContentsFormValues>;
 
-export function MultiSelectInput({ label, placeHolder, options }: MultiSelectInputProps) {
+export function MultiSelectInput({ label, placeHolder, options, ...props }: MultiSelectInputProps) {
   const id = React.useId();
-  const [ selectedValues, setSelectedValues ] = React.useState<MultiValue<MultiSelectOption>>([]);
-
-  console.log(selectedValues)
+  const { field, fieldState } = useController(props);
 
   const handleNewOption = (value: string) => {
-    setSelectedValues(
-      prevSelectedValues => [
-        ...prevSelectedValues,
-        {
-          id: options.length + 1,
-          label: value,
-          value,
-        },
-      ]
-    )
+    const newOption = {
+      id: options.length + 1,
+      label: value,
+      value,
+    };
+
+    const newOptions = [...field.value, newOption];
+    field.onChange(newOptions);
   }
 
   return (
@@ -49,10 +47,11 @@ export function MultiSelectInput({ label, placeHolder, options }: MultiSelectInp
           isSearchable
           placeholder={placeHolder}
           controlShouldRenderValue={false}
-          onChange={(values: MultiValue<MultiSelectOption>) => setSelectedValues(values)}
+          onChange={(values: MultiValue<MultiSelectOption>) => field.onChange(values)}
           onCreateOption={handleNewOption}
-          value={selectedValues}
-          isDisabled={selectedValues.length >= 5}
+          value={field.value}
+          name={field.name}
+          isDisabled={field.disabled || field.value.length >= 5}
           styles={{
             control: (baseStyles, { isDisabled }) => ({
               ...baseStyles,
@@ -96,14 +95,20 @@ export function MultiSelectInput({ label, placeHolder, options }: MultiSelectInp
         />
       </div>
 
+      {
+          fieldState.invalid
+          ? <small className={`danger-text ${commonStyles['error-text']}`}>{fieldState.error?.message}</small>
+          : null
+        }
+
       <div className={styles['selected-options-container']}>
         {
-          selectedValues.map(selectedValue => {
+          field.value.map((selectedValue: any) => {
             return (
               <SelectedOption
                 key={selectedValue.id}
                 {...selectedValue}
-                onClear={(id: any) => setSelectedValues(prevSelectedValues => prevSelectedValues.filter(value => value.id != id))}
+                onClear={(id: any) => field.onChange(field.value.filter((value: any) => value.id != id))}
               />
             );
           })
